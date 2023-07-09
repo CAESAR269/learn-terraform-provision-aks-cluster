@@ -15,7 +15,6 @@ resource "azurerm_resource_group" "default" {
     environment = "Demo"
   }
 }
-
 resource "azurerm_kubernetes_cluster" "default" {
   name                = "${random_pet.prefix.id}-aks"
   location            = azurerm_resource_group.default.location
