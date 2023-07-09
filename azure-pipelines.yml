@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Azure subscription 1(977812bc-0cfb-4c57-8912-a7804ccf8fba)'
+    backendAzureRmResourceGroupName: 'az'
+    backendAzureRmStorageAccountName: 'terra7'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'terraform {   backend "azurerm" {     resource_group_name  = "az"     storage_account_name = "terra7"     container_name       = "tfstate"     key                  = "d5RYaAptiyxLL+d0JdTAujzHSLJiHuFN2LQhCaXM/Ksk9r4RNNXvHq835SvUuPcqPQk/WfyijkeK+AStAT8X0w=="   } }'
